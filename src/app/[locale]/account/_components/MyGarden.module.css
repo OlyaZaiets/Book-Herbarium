@@ -1,0 +1,155 @@
+/* 
+
+.booksContainer {
+  padding: 1rem;
+
+}
+
+
+.page_title {
+padding: 15px 0;
+}
+.booksGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 30px;
+}
+
+.bookPlaceholder {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: solid 2px red;
+}
+
+.bookImage {
+  aspect-ratio: 3/4;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.picture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: solid 2px rgb(17, 0, 255);
+}
+
+.line {
+  height: 4px;
+  background: #e0e0e0;
+  width: 100%;
+  border-radius: 2px;
+}
+
+.line:last-child {
+  width: 60%;
+} */
+
+.booksContainer {
+  padding: 2rem;
+  /* background-color: #fcfaf2;  */
+}
+
+.page_title {
+padding: 15px 0;
+}
+
+.booksGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 40px;
+}
+
+/* Основна картка */
+.bookCard {
+  background-color: #fffef2; /* Кремовий колір картки */
+  /* border: 1px solid #dcd3b6; */
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 0 0 4px #fffef2, 0 0 0 5px #dcd3b6; /* Подвійна рамка */
+  transition: transform 0.2s;
+}
+
+.cardContent {
+  border: 1px solid #e8e2cf; /* Внутрішня тонка рамка */
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+}
+
+/* Верхній заголовок з листочком */
+.topLabel {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.leafIcon {
+  font-size: 1.2rem;
+}
+
+/* Контейнер зображення */
+.imageWrapper {
+  width: 100%;
+  /* aspect-ratio: 6/10;
+   */
+  /* margin-bottom: 20px; */
+  max-width: 60px;
+  max-height: 100px;
+  margin-bottom: 15px;
+}
+
+.bookImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Щоб квітка не обрізалася */
+}
+
+/* Текстовий блок */
+.bookDetails {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.bookTitle {
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #1a1a1a;
+  line-height: 1.2;
+}
+
+.bookSubtitle {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: #2c2c2c;
+}
+
+/* Розділювач */
+.divider {
+  height: 1px;
+  background-color: #e0d9c5;
+  width: 80%;
+  margin: 0 auto 10px;
+}
+
+.dateLabel {
+  font-size: 0.85rem;
+  color: #444;
+  font-weight: 500;
+}

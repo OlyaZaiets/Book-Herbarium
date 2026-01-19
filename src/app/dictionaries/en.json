@@ -1,0 +1,74 @@
+{
+  "nav": {
+    "garden": "My Garden",
+    "login": "Login"
+  },
+
+  "homepage": {
+    "mainCredo": "Manifesto against 'fast' content consumption",
+    "credo": "We don't remember plots — we remember ourselves and how we felt while reading",
+
+    "firstIntroduction": "In a world where we are pushed to count pages read, rate books with stars, and compete in yearly, monthly, and even 24-hour challenges, we choose to pause.",
+    "secondIntroduction": "We believe a book is not a unit of information. It is an imprint of who you were at a specific moment in time. The value lies not in quantity, but in the depth of the lived experience.",
+
+    "ourPhilosophyTitle": "Our philosophy",
+    "ourPhilosophyDescription": "This space was created to remove dry statistics and let something personal grow instead. Here, your books don't gather dust in an “Archive” list — they take root in your private garden.",
+
+    "whyHerbariumTitle": "Why Herbarium?",
+    "whyHerbariumDescription": "We replaced numbers with living metaphors, so you can feel the real weight of your experience.",
+
+    "whyHerbariumFirstSubtitle": "Instead of genres — life phases",
+    "whyHerbariumFirstDescription": "A book is not just fantasy or non-fiction. It can be your Anchor, your Turning Point, or your Awakening.",
+    "whyHerbariumSecondSubtitle": "Instead of ratings — observations",
+    "whyHerbariumSecondDescription": "We don't score books. We notice what they left in us.",
+    "whyHerbariumThirdSubtitle": "Instead of activity — presence",
+    "whyHerbariumThirdDescription": "We don't care how fast you read. We care how deeply you are with yourself in that moment.",
+
+    "personalLandscapeTitle": "Your personal landscape",
+    "personalLandscapeDescription": "This is not a user profile. It is a garden you tend.",
+
+    "personalLandscapeFirstSubtitle": "Sprouts",
+    "personalLandscapeFirstDescription": "Books you've just started, or ideas waiting for their moment.",
+    "personalLandscapeSecondSubtitle": "Flowers",
+    "personalLandscapeSecondDescription": "Your most vivid reading discoveries.",
+    "personalLandscapeThirdSubtitle": "Roots",
+    "personalLandscapeThirdDescription": "Texts that changed the way you see the world — for good.",
+    "summary": "You don't have to write perfectly here. You don't have to write much. Even one dried petal — a single line of memory — is enough."
+  },
+
+  "login": {
+    "title": "Sign in to your Herbarium",
+    "subtitleGoogle": "Continue with Google",
+    "or": "or",
+    "subtitleEmail": "Continue with Email",
+    "textNoAccount": "No account yet? We'll create one automatically."
+  }, 
+
+  "accountMenu": {
+    "account": "Account",
+    "logout": "Logout"
+  }, 
+
+  "statuses": {
+    "title": "Status",
+    "infoButton": "i",
+    "modalTitle": "Status Explanation",
+    "close": "Close",
+    "items": {
+      "perennials": { "label": "Perennials Care", "desc": "rereading classics or favorite books that have already become a part of me" },
+      "exotic": { "label": "Exotic Planting", "desc": "discovering a completely new, unusual genre or author" },
+      "asphalt": { "label": "Sprouting Through Asphalt", "desc": "reading complex, difficult literature that requires effort" },
+      "seeds": { "label": "Seed Gathering", "desc": "the period when I only add books to the 'I want to read' list, but do not open them yet"},
+      "shadow": {"label": "In the Deep Shade", "desc": "reading dark, melancholic stories or thrillers"},
+      "middaySun": {"label": "Under the Midday Sun", "desc": "light, warm books that bring joy"},
+      "dew": {"label": "Morning Dew", "desc": "reading short forms: poetry, essays, or short inspiring stories"},
+      "closedGarden": {"label": "Closed Garden", "desc": "reading something very personal, which I don't want to share"},
+      "pollination": {"label": "Open for Pollination", "desc": "waiting for recommendations, ready to discuss"},
+      "wildlife": {"label": "Wildlife", "desc": "not reading trendy books, searching for rare 'field' editions"},
+      "gardenSilence": {"label": "Garden Silence", "desc": "do not disturb, I am immersed in the plot"}
+    }
+  }
+}
+
+
+

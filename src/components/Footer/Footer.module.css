@@ -1,0 +1,14 @@
+.footer {
+  /* border-bottom: 1px solid #e5e5e5; */
+  border-bottom: 1px solid #0eac1b;
+}
+
+.nav {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #c5109e;
+}

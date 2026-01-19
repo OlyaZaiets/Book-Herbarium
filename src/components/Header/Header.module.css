@@ -1,0 +1,67 @@
+.header {
+  /* border-bottom: 1px solid #e5e5e5; */
+  border-bottom: 1px solid #db1b1b;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #2ada79;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.vertical {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  line-height: 0.9; /* або 1, або навіть 0.95 */
+  letter-spacing: none;
+  text-align: center;
+}
+
+.verticalWord {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  line-height: 0.9; /* 🔥 контролює відстань */
+  letter-spacing: 0.05em;
+  color: var(--text-heading);
+}
+
+.logo {
+  height: auto;
+  border: 1px solid #ff9100;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  border: 1px solid #271497;
+}
+
+.lang {
+  margin-left: 12px;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.lang:hover {
+  color: var(--text-accent);
+  background: var(--accent-soft);
+  text-decoration: none;
+}

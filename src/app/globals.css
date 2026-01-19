@@ -1,13 +1,14 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --background: #fbfaf7; /* теплий папір */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --text-primary: #1d1d1b;
+  --text-heading: #151514;
+  --text-accent: #2e6f4e;
+  --text-muted: #6b6b66; /* для підписів */
+
+  --accent: #2e6f4e; /* рослинний зелений */
+  --accent-soft: rgba(46, 111, 78, 0.12);
+  --border: rgba(0, 0, 0, 0.1);
 }
 
 html,
@@ -17,9 +18,12 @@ body {
 }
 
 body {
-  color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  /* line-height: 1.65;
+  font-size: 16px; */
+  color: var(--text-primary);
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -31,12 +35,57 @@ body {
 }
 
 a {
-  color: inherit;
+  color: var(--text-accent);
   text-decoration: none;
+  text-underline-offset: 3px;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+a:hover {
+  text-decoration: none;
+  color: #245a3f;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  /* letter-spacing: 0.1px;
+  line-height: 1.2; */
+  color: var(--text-heading);
+}
+
+p {
+  /* margin-bottom: 1rem; */
+  /* max-width: 70ch; */
+}
+
+ul,
+ol {
+  padding-left: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+li {
+  margin-bottom: 0.4rem;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--text-heading);
+}
+
+main {
+  width: min(100% - 2rem, 960px);
+  margin: 0 auto;
+  padding: 2rem 0;
+  border: solid 1px red;
 }

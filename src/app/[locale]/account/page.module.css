@@ -1,0 +1,38 @@
+
+.grid_title {
+  display: grid;
+
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 3fr;
+  gap: 0.5rem;   
+  text-align: center;
+}
+
+.status, .statusSelector {
+  grid-column: 2/3;
+  text-align: start;
+
+}
+
+
+.statusSelector {
+  padding-left: 16px;
+
+}
+.status {
+  padding-left: 24px;
+}
+
+.buttons_Container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: start;
+  padding-top: 62px;
+}
+
+.button_style {
+  padding: 10px 25px;
+
+}

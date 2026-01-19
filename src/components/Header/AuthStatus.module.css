@@ -1,0 +1,49 @@
+.wrap {
+  position: relative;
+}
+
+.trigger {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.avatar {
+  border-radius: 999px;
+}
+
+.name {
+  white-space: nowrap;
+}
+
+.menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  min-width: 180px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 14px;
+  padding: 10px;
+  background: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  display: grid;
+  gap: 8px;
+  z-index: 50;
+}
+
+.menuItem {
+  text-align: left;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+
+.menuItem:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+}
