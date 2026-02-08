@@ -67,6 +67,28 @@
       "wildlife": {"label": "Wildlife", "desc": "not reading trendy books, searching for rare 'field' editions"},
       "gardenSilence": {"label": "Garden Silence", "desc": "do not disturb, I am immersed in the plot"}
     }
+  },
+
+  "myGarden": {
+    "title": "My Garden",
+    "addNewPlant": "Add a new plant to Your Garden",
+    "phase": "Phases of Life",
+    "seasons": "Seasons",
+    "archive": "Petal Archive"
+  },
+
+  "bookDetails": {
+    "title": "Book Phenology: A Calendar of My States and Meanings",
+    "yourThoughts": "A few of your sentences",
+    "AIThoughts": "Thoughts of the AI Botanist-Philosopher",
+    "fieldNotesTitle": "Field Notes",
+    "addNote": "Add a note",
+    "newNote": "New note",
+    "placeholder": "Your observations while reading…",
+    "cancel": "Cancel",
+    "saving": "Saving…",
+    "savedDone": "Save"
+
   }
 }
 

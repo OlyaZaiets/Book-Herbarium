@@ -25,13 +25,13 @@ export default async function Account( {params }: Props) {
           items={s.items}/>
       </div>
       <div className={styles.buttons_Container}>
-        <button className={styles.button_style}>My Garden</button>
-        <button className={styles.button_style}>My Garden1</button>
-        <button className={styles.button_style}>My Garden2</button>
-        <button className={styles.button_style}>My Garden3</button>
+        <button className={styles.button_style}>{dict.myGarden.title}</button>
+        <button className={styles.button_style}>{dict.myGarden.phase}</button>
+        <button className={styles.button_style}>{dict.myGarden.seasons}</button>
+        <button className={styles.button_style}>{dict.myGarden.archive}</button>
       </div>
 
-      <MyGarden />
+      <MyGarden locale={locale} dict={dict.myGarden}/>
 
     </div>
   )

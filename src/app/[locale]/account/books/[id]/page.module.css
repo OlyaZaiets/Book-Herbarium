@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  justify-content: space-evenly;
+
+  
+}
+
+.moreInfo {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.divider {
+    width: 90%; /* Коротка риска, як на скріншоті */
+    height: 1px;
+    background-color: #d1d1d1; /* Світло-сірий колір */
+    /* margin: 15px auto; */
+  }
+
+.addNotesContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* розтягує блоки по краях */
+  width: 100%; /* щоб займати всю ширину контейнера */
+  /* margin-top: 20px; */
+}
+
+.fieldNotesTitle {
+  margin: 0 auto; /* заголовок по центру */
+  text-align: center;
+  flex: 1; /* займає простір між лівим і правим блоком */
+}
+
+.notesActions {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* відстань між текстом і кнопкою */
+}

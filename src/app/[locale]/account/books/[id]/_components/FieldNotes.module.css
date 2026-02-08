@@ -1,0 +1,194 @@
+.wrapper {
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 1rem;
+}
+
+.notesActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.notesActions button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: #2d5a27; /* Зелений колір під твій Garden */
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.notesActions button:hover {
+  transform: scale(1.1);
+}
+
+/* Сітка стікерів */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 1.5rem; /* Відстань між стікерами */
+  margin-top: 1rem;
+}
+
+/* Самі стікери */
+.note {
+  position: relative;
+  background: #fff9c4; /* Класичний жовтий стікер */
+  aspect-ratio: 1 / 1; /* Робить квадратним */
+  padding: 1.5rem;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Kalam', cursive, sans-serif; /* Бажано додати рукописний шрифт */
+  font-size: 1.1rem;
+  color: #333;
+  transform: rotate(-2deg); /* Легкий нахил */
+  transition: transform 0.2s;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.note:nth-child(even) {
+  background: #e1f5fe; /* Кожен другий буде блакитним */
+  transform: rotate(1.5deg);
+}
+
+.note:hover {
+  transform: scale(1.03) rotate(0deg);
+  box-shadow: 8px 8px 20px rgba(0,0,0,0.12);
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.noteActions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 12px; /* Відстань між олівцем і хрестиком */
+  opacity: 0; 
+  z-index: 10; /* Щоб кнопки були поверх тексту */
+  transition: opacity 0.2s ease;
+}
+
+.note:hover .noteActions {
+  opacity: 1;
+}
+
+.editBtn, .deleteBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.3rem;
+  line-height: 1;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.editBtn {
+  color: #666;
+}
+
+.editBtn:hover {
+  color: #2d5a27;
+  transform: scale(1.2);
+}
+
+.deleteBtn {
+  color: #f00505; /* Твій червоний колір */
+}
+
+.deleteBtn:hover {
+  color: #cc0000;
+  transform: scale(1.2);
+}
+
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.modal h3 {
+  margin-top: 0;
+  color: #2d5a27;
+}
+
+.modal textarea {
+  width: 100%;
+  height: 150px;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  resize: none;
+  outline: none;
+}
+
+.modal textarea:focus {
+  border-color: #2d5a27;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.actions button {
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.actions button:first-child {
+  background: #f0f0f0;
+  color: #666;
+}
+
+.actions button:last-child {
+  background: #2d5a27;
+  color: white;
+}
+
+.actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -70,6 +70,27 @@ export type Dictionary = {
       gardenSilence: StatusItem;
     }
   };
+
+  myGarden: {
+    title: string;
+    addNewPlant: string;
+    phase: string;
+    seasons: string;
+    archive: string;
+  },
+
+  bookDetails: {
+    title: string;
+    yourThoughts: string;
+    AIThoughts: string;
+    fieldNotesTitle: string;
+    addNote: string;
+    newNote: string;
+    placeholder: string;
+    cancel: string;
+    saving: string;
+    savedDone: string;
+  };
 }
 
 export type Locale = 'en' | 'uk';

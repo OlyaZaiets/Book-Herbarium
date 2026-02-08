@@ -44,7 +44,6 @@ export function Header({ locale, dict }: Props) {
         </Link>
 
         <nav className={styles.nav}>
-          <Link href={`/${locale}/books`}>{dict.nav.garden}</Link>
           <AuthStatus 
             locale={locale}
             login={dict.nav.login}

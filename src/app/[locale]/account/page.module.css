@@ -26,13 +26,47 @@
 .buttons_Container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   align-items: center;
-  justify-content: start;
   padding-top: 62px;
+  padding-inline: clamp(16px, 5vw, 32px);
 }
 
 .button_style {
-  padding: 10px 25px;
+  padding: 12px 24px;
+  width: 100%;
+  max-width: 320px;
+  border-radius: 12px;
 
+  background-color: #f5f7f4; /* ніжний фон */
+  border: 2px solid #a3c293; /* чітка зелена лінія */
+  color: #2f3a2f;
+
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
 }
+
+/* Hover — світло-зелений фон і трохи насиченіша лінія */
+.button_style:hover {
+  background-color: #e2f0e2;
+  border-color: #77a86b;
+}
+
+/* Active — кнопка “осідає” */
+.button_style:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* Focus для доступності */
+.button_style:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(119, 163, 119, 0.4);
+}
+
+

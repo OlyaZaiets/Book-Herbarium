@@ -52,7 +52,7 @@ export default function StatusSelector({ infoButton, modalTitle, close, items }:
             <h3>{modalTitle}</h3>
             <ul className={styles.statusList}>
               {statusEntries.map(([key, value]: [string, any]) => (
-                <li key={key} className={key === selected ? styles.activeStatus : ''}>
+                <li key={key} className={key === selected ? `${styles.activeStatus}` : ''}>
                   <strong>{value.label}</strong> — {value.desc}
                 </li>
               ))}
