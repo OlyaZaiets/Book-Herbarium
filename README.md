@@ -25,10 +25,10 @@
 
 **Frontend:** Next.js, React, TypeScript  
 **Backend:** Next.js API routes/server actions  
-**Database:** PostgreSQL (hosted on Neon)
+**Database:** PostgreSQL (Neon serverless)  
 **ORM:** Prisma  
 **Auth:** NextAuth  
 **Icons:** Lucide  
-**Linting & Formatting:** ESLint, Prettier  
+**Linting & Formatting:** ESLint, Prettier 
 
 ---
