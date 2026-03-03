@@ -12,7 +12,7 @@ export function Footer() {
           LinkedIn
         </a>
         <a
-          href="https://github.com/OlyaZaiets"
+          href="https://github.com/OlyaZaiets/Book-Herbarium"
           target="_blank"
           rel="noopener noreferrer"
         >

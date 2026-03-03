@@ -1,0 +1,91 @@
+.dropdownContainer {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px 0;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #eee; 
+}
+
+.title {
+  font-size: 16px;
+  color: #333;
+}
+
+.arrow {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+  color: #888;
+}
+
+.arrowOpen {
+  transform: rotate(180deg);
+}
+
+.list {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  z-index: 1;
+  padding: 5px 0;
+  display: flex;
+  flex-direction: column;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 8px 5px;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #e0e0e0;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.checkboxActive {
+  border-color: #45be74; 
+}
+
+.innerSquare {
+  width: 10px;
+  height: 10px;
+  background-color: #45be74;
+}
+
+.label {
+  font-size: 14px;
+  color: #666;
+}
+
+.labelActive {
+  color: #45be74;
+  font-weight: 500;
+}
+
+.list::-webkit-scrollbar {
+  width: 4px;
+}
+.list::-webkit-scrollbar-thumb {
+  background: #45be74;
+  border-radius: 4px;
+}

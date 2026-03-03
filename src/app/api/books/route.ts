@@ -13,14 +13,14 @@ export async function GET() {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { title, author, category, phase, thoughts, flower_slug, locale } = body;
+    const { title, author, season, phase, thoughts, flower_slug, locale } = body;
 
     // 1. Створюємо книгу в Neon
     const book = await prisma.book.create({
       data: { 
         title, 
         author, 
-        category, 
+        season, 
         phase, 
         thoughts, 
         flower_slug // додаємо зв'язок з квіткою

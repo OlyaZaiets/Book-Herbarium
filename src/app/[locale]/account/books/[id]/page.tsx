@@ -53,7 +53,6 @@ export default async function BookPage({ params }: PageProps) {
             alt={book.title}
             width={350} 
             height={350}
-            // className={styles.bookImage}
           />
         ) : (
           <div className={styles.imagePlaceholder} />
@@ -66,23 +65,14 @@ export default async function BookPage({ params }: PageProps) {
         <p>{book.author}</p>
         <div className={styles.divider}></div>
         <h3>{b.title}</h3>
-        <p>{book.phase}. {book.category}</p>
+        <p>{(dict.seasons.items as any)[book.season] || book.season}. {(dict.phaseOfLive.items as any)[book.phase] || book.phase}</p>
         <h3>{b.yourThoughts}</h3>
         <p>{book.thoughts}</p> 
-        {/* add few sentences */}  
         <h3>{b.AIThoughts}</h3>
         <p>{book.interpretation}</p>
         <div className={styles.divider}></div>
         <FieldNotes bookId={id} initialNotes={notes} dict={b}/>
-  
-
       </div>
-
-
-
-
-
-      
     </div>
   );
 }

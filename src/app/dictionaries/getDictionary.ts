@@ -91,6 +91,31 @@ export type Dictionary = {
     saving: string;
     savedDone: string;
   };
+
+  phaseOfLive: {
+    title: string;
+    items: {
+      supportive: string;
+      turningPoint: string;
+      livedThrough: string;
+      growth: string;
+      quiet: string;
+      burned: string;
+      light: string;
+    }
+  };
+
+  seasons: {
+    title: string;
+    items: {
+      winter: string;
+      dry: string;
+      fog: string;
+      changing: string;
+      spring: string;
+      blooming: string;
+    }
+  }
 }
 
 export type Locale = 'en' | 'uk';

@@ -1,7 +1,8 @@
 import { getDictionary, Locale } from '@/app/dictionaries/getDictionary';
 import StatusSelector from './_components/StatusSelector';
 import styles from './page.module.css';
-import MyGarden from './_components/MyGarden';
+import FilterManager from './_components/FilterManager';
+import { prisma } from '@/lib/prisma';
 
 type Props = {
   params: Promise<{locale : Locale}>;
@@ -14,6 +15,17 @@ export default async function Account( {params }: Props) {
 
     const s = dict.statuses;
 
+    const books = await prisma.book.findMany({
+    orderBy: { createdAt: 'desc' },
+    include: {
+      flower_catalog: true, // Це дозволить звертатися до book.flower_catalog.slug
+    }
+  });
+
+  const flowerCatalog = await prisma.flower_catalog.findMany({
+    orderBy: { name_en: 'asc' }
+  });
+
   return (
     <div className={styles.grid_title}>
       <p className={styles.status}>{s.title}</p>
@@ -24,15 +36,12 @@ export default async function Account( {params }: Props) {
           close={s.close}
           items={s.items}/>
       </div>
-      <div className={styles.buttons_Container}>
-        <button className={styles.button_style}>{dict.myGarden.title}</button>
-        <button className={styles.button_style}>{dict.myGarden.phase}</button>
-        <button className={styles.button_style}>{dict.myGarden.seasons}</button>
-        <button className={styles.button_style}>{dict.myGarden.archive}</button>
-      </div>
-
-      <MyGarden locale={locale} dict={dict.myGarden}/>
-
+      <FilterManager 
+        dict={dict}
+        locale={locale}
+        initialBooks={books}
+        flowerCatalog={flowerCatalog}
+      />
     </div>
   )
 }

@@ -1,7 +1,3 @@
-.header {
-  /* border-bottom: 1px solid #e5e5e5; */
-  border-bottom: 1px solid #db1b1b;
-}
 
 .container {
   max-width: 1000px;
@@ -10,7 +6,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid #2ada79;
 }
 
 .brand {
@@ -22,7 +17,7 @@
 .vertical {
   font-family: var(--font-heading);
   font-size: 1.2rem;
-  line-height: 0.9; /* або 1, або навіть 0.95 */
+  line-height: 0.9;
   letter-spacing: none;
   text-align: center;
 }
@@ -33,7 +28,7 @@
   align-items: center;
   font-family: var(--font-heading);
   font-size: 1rem;
-  line-height: 0.9; /* 🔥 контролює відстань */
+  line-height: 0.9;
   letter-spacing: 0.05em;
   color: var(--text-heading);
 }
@@ -41,13 +36,13 @@
 .logo {
   height: auto;
   border: 1px solid #ff9100;
+  border-radius: 12px;
 }
 
 .nav {
   display: flex;
   align-items: center;
   gap: 56px;
-  border: 1px solid #271497;
 }
 
 .lang {

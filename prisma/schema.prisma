@@ -58,7 +58,7 @@ model Book {
   author         String
   imageUrl       String?
   phase          String
-  category       String
+  season         String
   thoughts       String 
   interpretation String? 
   createdAt      DateTime        @default(now())

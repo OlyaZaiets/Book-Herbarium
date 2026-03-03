@@ -7,6 +7,7 @@ import Image from 'next/image';
 export default function AddBookModal({ flowerCatalog, dict, locale }: any) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedFlower, setSelectedFlower] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   // Функція для закриття модалки при натисканні на фон
   const handleOverlayClick = (e: React.MouseEvent) => {
@@ -15,15 +16,16 @@ export default function AddBookModal({ flowerCatalog, dict, locale }: any) {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
+  setLoading(true);
   const formData = new FormData(e.currentTarget);
   
   const data = {
     title: formData.get('title'),
     author: formData.get('author'),
-    category: formData.get('category'),
+    season: formData.get('season'),
     phase: formData.get('phase'),
     thoughts: formData.get('thoughts'),
-    flower_slug: formData.get('flower_slug'), // Переконайтеся, що radio button має name="flower_slug"
+    flower_slug: formData.get('flower_slug'), // Переконайтеся, що radio button має name='flower_slug'
     locale: locale,
   };
 
@@ -36,7 +38,10 @@ export default function AddBookModal({ flowerCatalog, dict, locale }: any) {
   if (response.ok) {
     setIsOpen(false);
     window.location.reload(); // Оновлюємо сторінку, щоб побачити нову квітку
-  }
+  } else {
+      setLoading(false);
+      alert('Something went wrong with the soil...'); 
+    }
 };
 
   return (
@@ -55,23 +60,27 @@ export default function AddBookModal({ flowerCatalog, dict, locale }: any) {
             
             <form onSubmit={handleSubmit} className={styles.form}>
               <div className={styles.inputGroup}>
-                <input type="text" name="title" placeholder="Book Title" required />
-                <input type="text" name="author" placeholder="Author" required />
+                <input type='text' name='title' placeholder='Book Title' required />
+                <input type='text' name='author' placeholder='Author' required />
               </div>
 
               <div className={styles.selectGroup}>
-                <select name="category" required>
-                  <option value="">Category (Anchor, Turning Point...)</option>
-                  <option value="Anchor">Anchor</option>
-                  <option value="Turning Point">Turning Point</option>
-                  <option value="Awakening">Awakening</option>
+                <select name='season' required>
+                  <option value=''>{dict.seasons.title}</option>
+                  {Object.entries(dict.seasons?.items || {}).map(([key, value]) => (
+                    <option key={key} value={key}>
+                      {value as string}
+                    </option>
+                  ))}
                 </select>
 
-                <select name="phase" required>
-                  <option value="">Life Phase (Seed, Bloom...)</option>
-                  <option value="Seed">Seed</option>
-                  <option value="Sprout">Sprout</option>
-                  <option value="Bloom">Bloom</option>
+                <select name='phase' required>
+                  <option value=''>{dict.phaseOfLive.title}</option>
+                  {Object.entries(dict.phaseOfLive?.items || {}).map(([key, value]) => (
+                    <option key={key} value={key}>
+                      {value as string}
+                    </option>
+                  ))}
                 </select>
               </div>
 
@@ -81,8 +90,8 @@ export default function AddBookModal({ flowerCatalog, dict, locale }: any) {
                   {flowerCatalog.map((flower: any) => (
                     <label key={flower.slug} className={styles.flowerLabel}>
                       <input 
-                        type="radio" 
-                        name="flower_slug" 
+                        type='radio' 
+                        name='flower_slug' 
                         value={flower.slug} 
                         onChange={() => setSelectedFlower(flower.slug)}
                         required
@@ -103,10 +112,14 @@ export default function AddBookModal({ flowerCatalog, dict, locale }: any) {
                 </div>
               </div>
 
-              <textarea name="thoughts" placeholder="Your initial thoughts..."></textarea>
+              <textarea name='thoughts' placeholder='Your initial thoughts...'></textarea>
               
-              <button type="submit" className={styles.submitBtn}>
-                Plant into my Garden
+              <button 
+                type='submit' 
+                className={styles.submitBtn} 
+                disabled={loading}
+              >
+                {loading ? 'Planting...' : 'Plant into my Garden'}
               </button>
             </form>
           </div>

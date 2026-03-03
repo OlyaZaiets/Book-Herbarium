@@ -88,7 +88,31 @@
     "cancel": "Cancel",
     "saving": "Saving…",
     "savedDone": "Save"
+  },
 
+  "phaseOfLive": {
+    "title": "Phases of Life",
+    "items": {
+      "supportive": "Supportive Books",
+      "turningPoint": "Turning-Point Books",
+      "livedThrough": "Books I've Lived Through",
+      "growth": "Growth Books",
+      "quiet": "Quiet Books",
+      "burned": "Books That Burned",
+      "light": "Light Books"
+    }
+  },
+
+  "seasons": {
+    "title": "Seasons",
+    "items": {
+      "winter": "Winter Hibernation",
+      "dry": "Dry Spell",
+      "fog": "Fog",
+      "changing": "Changing Weather",
+      "spring": "Spring Awakening",
+      "blooming": "Blooming Abundance"
+    }
   }
 }
 

@@ -46,12 +46,6 @@ export default async function Home({ params }: Props) {
       <p>{h.personalLandscapeThirdDescription}</p>
       <div className={styles.divider}></div>
       <p>{h.summary}</p>
-      {/* <Image  
-        src='/yellow-flower.png' 
-        alt='yellow flower' 
-        width={100}
-        height={150}
-        priority/> */}
     </div>
   );
 }

@@ -19,7 +19,8 @@ export async function generateBotanistInterpretation(bookId: string, locale: 'en
     if (!book) return null;
 
     const model = genAI.getGenerativeModel({ 
-      model: "gemini-3-flash-preview",
+      model: "gemini-2.5-flash",
+      // model: "gemini-1.5-flash",
       systemInstruction: BOTANIST_SYSTEM_PROMPT,
     });
 
@@ -41,21 +42,37 @@ export async function generateBotanistInterpretation(bookId: string, locale: 'en
       Symbolism: ${symbolism || 'General botanical growth'}
 
       [USER DATA]
-      Category: ${book.category}
+      Category: ${book.season}
       Phase: ${book.phase}
       User's Thoughts: "${book.thoughts || 'The gardener is silent for now.'}"
     `;
+    try {
+      const result = await model.generateContent(userContent);
+      const response = result.response;
+      const interpretation = response.text().trim();
 
-    const result = await model.generateContent(userContent);
-    const response = result.response;
-    const interpretation = response.text().trim();
+      await prisma.book.update({
+        where: { id: bookId },
+        data: { interpretation }
+      });
 
-    await prisma.book.update({
-      where: { id: bookId },
-      data: { interpretation }
-    });
+      return interpretation;
+      } catch (aiError: any) {
+      // Якщо AI перевантажений (503) або ліміт вичерпано
+      console.error("AI Service spike detected:", aiError.message);
+      
+      const fallbackText = locale === 'en' 
+        ? "The botanist is currently wandering the gardens. Your plant is growing, check back later for its meaning."
+        : "Ботанік зараз гуляє садом. Ваша рослина росте, зазирніть пізніше за її тлумачення.";
 
-    return interpretation;
+      await prisma.book.update({
+        where: { id: bookId },
+        data: { interpretation: fallbackText }
+      });
+      
+      return fallbackText;
+    }
+  
   } catch (error) {
     console.error("Botanist AI Error:", error);
     return null;

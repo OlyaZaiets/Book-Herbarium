@@ -16,7 +16,13 @@ type Props = {
 
 export default function StatusSelector({ infoButton, modalTitle, close, items }: Props) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState('perennials');
+  const [selected, setSelected] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("readingStatus");
+      return saved && items[saved] ? saved : "perennials";
+    }
+    return "perennials";
+  });
 
   // Перетворюємо об'єкт статусів у масив для ітерації
   const statusEntries = Object.entries(items);
@@ -27,7 +33,11 @@ export default function StatusSelector({ infoButton, modalTitle, close, items }:
         <select 
           className={styles.status_select}
           value={selected}
-          onChange={(e) => setSelected(e.target.value)}
+          onChange={(e) => {
+            const value = e.target.value;
+            setSelected(value);
+            localStorage.setItem("readingStatus", value);
+          }}
         >
           {statusEntries.map(([key, value]) => (
             <option key={key} value={key}>
@@ -51,7 +61,7 @@ export default function StatusSelector({ infoButton, modalTitle, close, items }:
           <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
             <h3>{modalTitle}</h3>
             <ul className={styles.statusList}>
-              {statusEntries.map(([key, value]: [string, any]) => (
+              {statusEntries.map(([key, value]: [string, StatusItem]) => (
                 <li key={key} className={key === selected ? `${styles.activeStatus}` : ''}>
                   <strong>{value.label}</strong> — {value.desc}
                 </li>

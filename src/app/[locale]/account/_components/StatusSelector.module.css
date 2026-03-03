@@ -5,7 +5,7 @@
 }
 
 .status_select {
-  appearance: none; /* прибирає дефолтні стрілки */
+  appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
 
@@ -39,7 +39,6 @@
 
 
 .infoBtn {
-  /* Наслідування стилю addButton */
   width: 40px;
   height: 40px;
   border-radius: 999px;
@@ -63,30 +62,21 @@
     box-shadow 0.1s ease;
 }
 
-/* Hover */
 .infoBtn:hover {
   background-color: #e2f0e2;
   border-color: #77a86b;
 }
 
-/* Active */
 .infoBtn:active {
   transform: translateY(1px);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
-/* Focus */
 .infoBtn:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px rgba(119, 163, 119, 0.4);
 }
 
-
-
-
-
-
-/* Modal Styles */
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -123,11 +113,11 @@
 
 
 .statusList li.activeStatus {
-  color: #2f6b2f; /* темно-зелений текст */
+  color: #2f6b2f;
   padding-left: 8px;
-  border-left: 4px solid #77a86b; /* насичений зелений */
+  border-left: 4px solid #77a86b;
   font-weight: 600;
-  background-color: #e2f0e2; /* легкий зелений фон */
+  background-color: #e2f0e2;
   border-radius: 6px;
 }
 
@@ -135,10 +125,10 @@
 .closeBtn {
   padding: 8px 16px;
   cursor: pointer;
-  border-radius: 12px; /* як у addButton */
-  border: 2px solid #a3c293; /* зелена рамка */
-  background-color: #f5f7f4; /* ніжний фон */
-  color: #2f3a2f; /* темно-зелений текст */
+  border-radius: 12px;
+  border: 2px solid #a3c293;
+  background-color: #f5f7f4;
+  color: #2f3a2f;
   font-weight: 600;
   transition:
     background-color 0.2s ease,
@@ -147,19 +137,16 @@
     box-shadow 0.1s ease;
 }
 
-/* Hover — світло-зелений фон і насиченіша рамка */
 .closeBtn:hover {
   background-color: #e2f0e2;
   border-color: #77a86b;
 }
 
-/* Active — кнопка “осідає” */
 .closeBtn:active {
   transform: translateY(1px);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
-/* Focus для доступності */
 .closeBtn:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px rgba(119, 163, 119, 0.4);

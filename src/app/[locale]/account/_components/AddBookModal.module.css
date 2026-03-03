@@ -1,7 +1,6 @@
 .addButton {
-  /* Успадкування стилю button_style */
   padding: 10px 16px;
-  width: 40px;          /* квадратна кнопка для + */
+  width: 40px;
   height: 40px;
   border-radius: 12px;
 
@@ -9,7 +8,7 @@
   border: 2px solid #a3c293;
   color: #2f3a2f;
 
-  font-size: 24px;      /* великий плюс */
+  font-size: 24px;
   font-weight: 600;
   cursor: pointer;
 
@@ -24,26 +23,20 @@
     box-shadow 0.1s ease;
 }
 
-/* Hover — світло-зелений фон і трохи насиченіша лінія */
 .addButton:hover {
   background-color: #e2f0e2;
   border-color: #77a86b;
 }
 
-/* Active — кнопка “осідає” */
 .addButton:active {
   transform: translateY(1px);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
-/* Focus для доступності */
 .addButton:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px rgba(119, 163, 119, 0.4);
 }
-
-
-
 
 .modalOverlay {
   position: fixed;
@@ -51,7 +44,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(47, 58, 47, 0.4); /* темний зеленкуватий відтінок */
+  background: rgba(47, 58, 47, 0.4);
   backdrop-filter: blur(3px);
   display: flex;
   justify-content: center;

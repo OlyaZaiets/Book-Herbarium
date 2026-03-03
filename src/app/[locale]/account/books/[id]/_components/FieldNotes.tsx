@@ -98,19 +98,46 @@ export default function FieldNotes( {bookId, initialNotes, dict }: FieldNotesPro
             <button onClick={() => setIsOpen(true)}>+</button>
           </div>
       </div>
+      <div className={styles.divider2}></div>
 
       {/* Notes grid */}
       <div className={styles.grid}>
         {notes.map(note => (
-          <div key={note.id} className={styles.note}>
+          <div
+            key={note.id}
+            role="button"
+            tabIndex={0}
+            className={styles.note}
+            onClick={() => startEdit(note)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                startEdit(note);
+              }
+            }}
+            title="Click to read more"
+          >
             <div className={styles.noteActions}>
-              <button className={styles.editBtn} onClick={() => startEdit(note)}>✎</button>
               <button
-                className={styles.deleteBtn} 
-                onClick={() => handleDelete(note.id)}
-                >
-                  ×
-                </button>
+                type="button"
+                className={styles.editBtn}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  startEdit(note);
+                }}
+              >
+                ✎
+              </button>
+
+              <button
+                type="button"
+                className={styles.deleteBtn}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleDelete(note.id);
+                }}
+              >
+                ×
+              </button>
             </div>
             {note.content}
           </div>
