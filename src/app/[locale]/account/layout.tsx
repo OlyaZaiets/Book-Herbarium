@@ -1,20 +1,21 @@
+'use client';
+import { use } from 'react';
 import type { Locale } from '@/app/dictionaries/getDictionary';
 
 const supportedLocales: Locale[] = ['en', 'uk'];
 
-export default async function AccountLayout({
-  children,
-  params,
-}: {
+type AccountLayoutProps = {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>; // Next.js передає Promise
-}) {
-  const { locale: rawLocale } = await params;
+  params: Promise<{ locale: string }>;
+};
 
-  // явне приведення або fallback
+export default function AccountLayout({ children, params }: AccountLayoutProps) {
+  // використовуємо React.use() для "розпаковки" Promise
+  const { locale: rawLocale } = use(params);
+
   const locale: Locale = supportedLocales.includes(rawLocale as Locale)
     ? (rawLocale as Locale)
-    : 'en'; // fallback, якщо невідома локаль
+    : 'en'; // fallback
 
   return (
     <html lang={locale}>
