@@ -7,13 +7,14 @@ export default async function AccountLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>; // ✅ params — це Promise
+  params: Promise<{ locale: string }>; // Next.js передає Promise
 }) {
-  const { locale: rawLocale } = await params; // чекаємо на Promise
+  const { locale: rawLocale } = await params;
 
-  const locale = supportedLocales.includes(rawLocale as Locale)
+  // явне приведення або fallback
+  const locale: Locale = supportedLocales.includes(rawLocale as Locale)
     ? (rawLocale as Locale)
-    : 'en'; // fallback
+    : 'en'; // fallback, якщо невідома локаль
 
   return (
     <html lang={locale}>
