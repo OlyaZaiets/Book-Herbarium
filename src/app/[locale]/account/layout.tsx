@@ -38,28 +38,20 @@ import { redirect } from "next/navigation";
 // }
 
 import type { Locale } from '@/app/dictionaries/getDictionary';
+import { ReactNode } from 'react';
 
 const supportedLocales: Locale[] = ['en', 'uk'];
 
-type AccountLayoutProps = {
-  children: React.ReactNode;
-  params: { locale: string } | Promise<{ locale: string }>; // Next.js може передати Promise
-};
+interface AccountLayoutProps {
+  children: ReactNode;
+  params: Promise<{ locale: Locale }>; // Next.js чекає саме Locale
+}
 
 export default async function AccountLayout({
   children,
   params,
 }: AccountLayoutProps) {
-  // якщо params — Promise, чекаємо на нього
-  const { locale: rawLocale } = params instanceof Promise ? await params : params;
+  const { locale } = await params; // unwrap Promise
 
-  const locale: Locale = supportedLocales.includes(rawLocale as Locale)
-    ? (rawLocale as Locale)
-    : 'en'; // fallback
-
-  return (
-    <>
-      {children}
-    </>
-  );
+  return <>{children}</>;
 }
