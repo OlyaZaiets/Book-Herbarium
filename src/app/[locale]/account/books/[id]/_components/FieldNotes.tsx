@@ -8,15 +8,19 @@ type Note = {
   id: string;
   content: string;
   // createdAt: string;
-}
+};
 
 type FieldNotesProps = {
   bookId: string;
   initialNotes: Note[];
   dict: Dictionary['bookDetails'];
-}
+};
 
-export default function FieldNotes( {bookId, initialNotes, dict }: FieldNotesProps) {
+export default function FieldNotes({
+  bookId,
+  initialNotes,
+  dict,
+}: FieldNotesProps) {
   const [notes, setNotes] = useState<Note[]>(initialNotes);
   const [isOpen, setIsOpen] = useState(false);
   const [text, setText] = useState('');
@@ -41,11 +45,12 @@ export default function FieldNotes( {bookId, initialNotes, dict }: FieldNotesPro
           body: JSON.stringify({ content: text }),
         });
         const updatedNote = await res.json();
-        setNotes(prev => prev.map(n => n.id === editingId ? updatedNote : n));
-        
+        setNotes((prev) =>
+          prev.map((n) => (n.id === editingId ? updatedNote : n))
+        );
       } else {
         const res = await fetch('/api/notes', {
-          method: 'POST', 
+          method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             bookId,
@@ -56,13 +61,12 @@ export default function FieldNotes( {bookId, initialNotes, dict }: FieldNotesPro
         if (!res.ok) throw new Error('Помилка сервера');
 
         const newNote = await res.json();
-        setNotes(prev => [newNote, ...prev]);
+        setNotes((prev) => [newNote, ...prev]);
       }
 
       setIsOpen(false);
       setText('');
       setEditingId(null);
-      
     } catch (error) {
       alert('Failed to save note. Please try again.');
       console.error(error);
@@ -72,37 +76,36 @@ export default function FieldNotes( {bookId, initialNotes, dict }: FieldNotesPro
   }
 
   async function handleDelete(id: string) {
-  if (!confirm('Delete this note?')) return;
+    if (!confirm('Delete this note?')) return;
 
-  try {
-    const res = await fetch(`/api/notes/${id}`, {
-      method: 'DELETE',
-    });
+    try {
+      const res = await fetch(`/api/notes/${id}`, {
+        method: 'DELETE',
+      });
 
-    if (res.ok) {
-      setNotes(prev => prev.filter(note => note.id !== id));
+      if (res.ok) {
+        setNotes((prev) => prev.filter((note) => note.id !== id));
+      }
+    } catch (error) {
+      console.error('Failed to delete:', error);
     }
-  } catch (error) {
-    console.error('Failed to delete:', error);
   }
-}
 
-
-  return(
+  return (
     <section className={styles.wrapper}>
       {/* Header */}
       <div className={styles.header}>
         <h2>{dict.fieldNotesTitle}</h2>
         <div className={styles.notesActions}>
-            <p>{dict.addNote}</p>
-            <button onClick={() => setIsOpen(true)}>+</button>
-          </div>
+          <p>{dict.addNote}</p>
+          <button onClick={() => setIsOpen(true)}>+</button>
+        </div>
       </div>
       <div className={styles.divider2}></div>
 
       {/* Notes grid */}
       <div className={styles.grid}>
-        {notes.map(note => (
+        {notes.map((note) => (
           <div
             key={note.id}
             role="button"
@@ -152,7 +155,7 @@ export default function FieldNotes( {bookId, initialNotes, dict }: FieldNotesPro
 
             <textarea
               value={text}
-              onChange={e => setText(e.target.value)}
+              onChange={(e) => setText(e.target.value)}
               placeholder={dict.placeholder}
             />
 
@@ -166,5 +169,5 @@ export default function FieldNotes( {bookId, initialNotes, dict }: FieldNotesPro
         </div>
       )}
     </section>
-  )
+  );
 }

@@ -41,7 +41,7 @@ export type Dictionary = {
   login: {
     title: string;
     subtitleGoogle: string;
-    or: string,
+    or: string;
     subtitleEmail: string;
     textNoAccount: string;
   };
@@ -52,7 +52,7 @@ export type Dictionary = {
   };
 
   statuses: {
-    title: string,
+    title: string;
     infoButton: string;
     modalTitle: string;
     close: string;
@@ -68,7 +68,7 @@ export type Dictionary = {
       pollination: StatusItem;
       wildlife: StatusItem;
       gardenSilence: StatusItem;
-    }
+    };
   };
 
   myGarden: {
@@ -77,7 +77,7 @@ export type Dictionary = {
     phase: string;
     seasons: string;
     archive: string;
-  },
+  };
 
   bookDetails: {
     title: string;
@@ -102,7 +102,7 @@ export type Dictionary = {
       quiet: string;
       burned: string;
       light: string;
-    }
+    };
   };
 
   seasons: {
@@ -114,9 +114,9 @@ export type Dictionary = {
       changing: string;
       spring: string;
       blooming: string;
-    }
-  }
-}
+    };
+  };
+};
 
 export type Locale = 'en' | 'uk';
 

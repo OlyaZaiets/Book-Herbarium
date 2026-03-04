@@ -1,6 +1,6 @@
-import { auth } from "@/auth";
-import { redirect } from "next/navigation";
-import type { Locale } from "@/app/dictionaries/getDictionary";
+import { auth } from '@/auth';
+import { redirect } from 'next/navigation';
+import type { Locale } from '@/app/dictionaries/getDictionary';
 
 export default async function AccountLayout({
   children,

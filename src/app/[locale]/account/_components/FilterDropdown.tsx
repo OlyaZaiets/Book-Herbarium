@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react';
 import styles from './FilterDropdown.module.css';
 
 interface FilterItem {
@@ -15,29 +15,36 @@ interface FilterDropdownProps {
   onChange: (selected: string[]) => void;
 }
 
-export default function FilterDropdown( {title, items, selectedIds, onChange} : FilterDropdownProps) {
+export default function FilterDropdown({
+  title,
+  items,
+  selectedIds,
+  onChange,
+}: FilterDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target as Node)
+      ) {
         setIsOpen(false);
-      } 
-    }
+      }
+    };
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
   }, []);
 
   const toggleItem = (itemId: string) => {
     const updated = selectedIds.includes(itemId)
-      ? selectedIds.filter(i => i !== itemId)
+      ? selectedIds.filter((i) => i !== itemId)
       : [...selectedIds, itemId];
 
     onChange(updated);
   };
 
-  
   return (
     <div className={styles.dropdownContainer} ref={dropdownRef}>
       <div className={styles.header} onClick={() => setIsOpen(!isOpen)}>
@@ -52,18 +59,22 @@ export default function FilterDropdown( {title, items, selectedIds, onChange} : 
           {items.map((item) => {
             const isChecked = selectedIds.includes(item.id);
             return (
-              <div 
-                key={item.id} 
-                className={styles.item} 
-                onClick={(e) =>{
+              <div
+                key={item.id}
+                className={styles.item}
+                onClick={(e) => {
                   e.stopPropagation();
-                  toggleItem(item.id)}
-                }
+                  toggleItem(item.id);
+                }}
               >
-                <div className={`${styles.checkbox} ${isChecked ? styles.checkboxActive : ''}`}>
+                <div
+                  className={`${styles.checkbox} ${isChecked ? styles.checkboxActive : ''}`}
+                >
                   {isChecked && <div className={styles.innerSquare} />}
                 </div>
-                <span className={`${styles.label} ${isChecked ? styles.labelActive : ''}`}>
+                <span
+                  className={`${styles.label} ${isChecked ? styles.labelActive : ''}`}
+                >
                   {item.label}
                 </span>
               </div>

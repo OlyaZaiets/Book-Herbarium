@@ -18,7 +18,6 @@ export default async function BookPage({ params }: PageProps) {
 
   const b = dict.bookDetails;
 
-
   const book = await prisma.book.findUnique({
     where: { id: id },
     include: {
@@ -26,52 +25,51 @@ export default async function BookPage({ params }: PageProps) {
     },
   });
 
-  
   if (!book) {
-    return notFound(); 
+    return notFound();
   }
 
-  const notes = await prisma.note.findMany({ 
+  const notes = await prisma.note.findMany({
     where: { bookId: id },
-    orderBy: { createdAt: 'desc' }
+    orderBy: { createdAt: 'desc' },
   });
 
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+  const CLOUDINARY_URL = `https://res.cloudinary.com/${cloudName}/image/upload`;
 
-    const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
-    const CLOUDINARY_URL = `https://res.cloudinary.com/${cloudName}/image/upload`;
-
-    const displayImageUrl = book.flower_slug 
-      ? `${CLOUDINARY_URL}/${book.flower_slug}.png` 
-      : book.imageUrl;
+  const displayImageUrl = book.flower_slug
+    ? `${CLOUDINARY_URL}/${book.flower_slug}.png`
+    : book.imageUrl;
 
   return (
     <div className={styles.container}>
       <div className={styles.imageSection}>
-        { displayImageUrl ? (
+        {displayImageUrl ? (
           <Image
             src={displayImageUrl}
             alt={book.title}
-            width={350} 
+            width={350}
             height={350}
           />
         ) : (
           <div className={styles.imagePlaceholder} />
-        )
-        }
-
+        )}
       </div>
       <div className={styles.moreInfo}>
         <h1>{book.title}</h1>
         <p>{book.author}</p>
         <div className={styles.divider}></div>
         <h3>{b.title}</h3>
-        <p>{(dict.seasons.items as any)[book.season] || book.season}. {(dict.phaseOfLive.items as any)[book.phase] || book.phase}</p>
+        <p>
+          {(dict.seasons.items as any)[book.season] || book.season}.{' '}
+          {(dict.phaseOfLive.items as any)[book.phase] || book.phase}
+        </p>
         <h3>{b.yourThoughts}</h3>
-        <p>{book.thoughts}</p> 
+        <p>{book.thoughts}</p>
         <h3>{b.AIThoughts}</h3>
         <p>{book.interpretation}</p>
         <div className={styles.divider}></div>
-        <FieldNotes bookId={id} initialNotes={notes} dict={b}/>
+        <FieldNotes bookId={id} initialNotes={notes} dict={b} />
       </div>
     </div>
   );

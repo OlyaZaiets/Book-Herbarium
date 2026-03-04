@@ -1,19 +1,24 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import Link from "next/link";
-import { signIn, signOut, useSession } from "next-auth/react";
-import { useEffect, useRef, useState } from "react";
-import styles from "./AuthStatus.module.css";
+import Image from 'next/image';
+import Link from 'next/link';
+import { signIn, signOut, useSession } from 'next-auth/react';
+import { useEffect, useRef, useState } from 'react';
+import styles from './AuthStatus.module.css';
 
 type Props = {
   locale: string;
   login: string;
   accountLabel: string;
   logoutLabel: string;
-}; 
+};
 
-export function AuthStatus({ locale, login, accountLabel, logoutLabel }: Props) {
+export function AuthStatus({
+  locale,
+  login,
+  accountLabel,
+  logoutLabel,
+}: Props) {
   const { data, status } = useSession();
   const [open, setOpen] = useState(false);
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -23,17 +28,17 @@ export function AuthStatus({ locale, login, accountLabel, logoutLabel }: Props) 
       if (!wrapRef.current) return;
       if (!wrapRef.current.contains(e.target as Node)) setOpen(false);
     };
-    document.addEventListener("click", onDocClick);
-    return () => document.removeEventListener("click", onDocClick);
+    document.addEventListener('click', onDocClick);
+    return () => document.removeEventListener('click', onDocClick);
   }, []);
 
-  if (status === "loading") return <span style={{ opacity: 0.7 }}>…</span>;
+  if (status === 'loading') return <span style={{ opacity: 0.7 }}>…</span>;
 
   if (!data?.user) {
     return (
       <button
         type="button"
-        onClick={() => signIn("google", { callbackUrl: `/${locale}` })}
+        onClick={() => signIn('google', { callbackUrl: `/${locale}` })}
       >
         {login}
       </button>
@@ -58,9 +63,7 @@ export function AuthStatus({ locale, login, accountLabel, logoutLabel }: Props) 
             className={styles.avatar}
           />
         )}
-        <span className={styles.name}>
-          {data.user.name ?? data.user.email}
-        </span>
+        <span className={styles.name}>{data.user.name ?? data.user.email}</span>
       </button>
 
       {open && (

@@ -5,7 +5,7 @@ import { generateBotanistInterpretation } from '@/lib/ai/generate-interpretation
 export async function GET() {
   const books = await prisma.book.findMany({
     orderBy: { createdAt: 'desc' },
-    include: { flower_catalog: true }
+    include: { flower_catalog: true },
   });
   return NextResponse.json(books);
 }
@@ -13,17 +13,18 @@ export async function GET() {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { title, author, season, phase, thoughts, flower_slug, locale } = body;
+    const { title, author, season, phase, thoughts, flower_slug, locale } =
+      body;
 
     // 1. Створюємо книгу в Neon
     const book = await prisma.book.create({
-      data: { 
-        title, 
-        author, 
-        season, 
-        phase, 
-        thoughts, 
-        flower_slug // додаємо зв'язок з квіткою
+      data: {
+        title,
+        author,
+        season,
+        phase,
+        thoughts,
+        flower_slug, // додаємо зв'язок з квіткою
       },
     });
 
@@ -33,12 +34,15 @@ export async function POST(req: Request) {
 
     // Отримуємо оновлену книгу з інтерпретацією
     const updatedBook = await prisma.book.findUnique({
-      where: { id: book.id }
+      where: { id: book.id },
     });
 
     return NextResponse.json(updatedBook);
   } catch (error) {
-    console.error("Error creating book:", error);
-    return NextResponse.json({ error: "Failed to create book" }, { status: 500 });
+    console.error('Error creating book:', error);
+    return NextResponse.json(
+      { error: 'Failed to create book' },
+      { status: 500 }
+    );
   }
 }

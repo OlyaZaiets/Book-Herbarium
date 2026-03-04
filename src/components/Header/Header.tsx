@@ -44,16 +44,14 @@ export function Header({ locale, dict }: Props) {
         </Link>
 
         <nav className={styles.nav}>
-          <AuthStatus 
+          <AuthStatus
             locale={locale}
             login={dict.nav.login}
             accountLabel={dict.accountMenu.account}
             logoutLabel={dict.accountMenu.logout}
-            />
-
-          <LanguageSwitch 
-            locale={locale}
           />
+
+          <LanguageSwitch locale={locale} />
         </nav>
       </div>
     </header>

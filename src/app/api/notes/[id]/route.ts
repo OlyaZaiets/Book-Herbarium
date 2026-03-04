@@ -12,6 +12,7 @@ export async function DELETE(
     });
     return NextResponse.json({ message: 'Note deleted' });
   } catch (error) {
+    console.log(error);
     return NextResponse.json({ error: 'Error deleting note' }, { status: 500 });
   }
 }
