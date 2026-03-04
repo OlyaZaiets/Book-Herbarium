@@ -2,19 +2,22 @@ import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 import type { Locale } from '@/app/dictionaries/getDictionary';
 
+const supportedLocales: Locale[] = ['en', 'uk'];
+
 export default async function AccountLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: Locale }>;
+  params: { locale: string };
 }) {
-  const { locale } = await params;
+  const locale = supportedLocales.includes(params.locale as Locale)
+    ? (params.locale as Locale)
+    : 'en'; // fallback
 
-  const session = await auth();
-  if (!session?.user) {
-    redirect(`/${locale}/login`);
-  }
-
-  return <>{children}</>;
+  return (
+    <html lang={locale}>
+      <body>{children}</body>
+    </html>
+  );
 }
