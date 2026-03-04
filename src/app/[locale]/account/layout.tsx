@@ -1,20 +1,38 @@
-import type { Locale } from '@/app/dictionaries/getDictionary';
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
+// import type { Locale } from "@/app/dictionaries/getDictionary";
 
-const supportedLocales: Locale[] = ['en', 'uk'];
+// export default async function AccountLayout({
+//   children,
+//   params,
+// }: {
+//   children: React.ReactNode;
+//   params: Promise<{ locale: Locale }>;
+// }) {
+//   const { locale } = await params;
 
-type AccountLayoutProps = {
+//   const session = await auth();
+//   if (!session?.user) {
+//     redirect(`/${locale}/login`);
+//   }
+
+//   return <>{children}</>;
+// }
+
+type Locale = 'en' | 'uk' ; // приклад
+
+export default async function AccountLayout({
+  children,
+  params,
+}: {
   children: React.ReactNode;
-  params: { locale: string }; // синхронно, без Promise
-};
-
-export default function AccountLayout({ children, params }: AccountLayoutProps) {
-  const locale: Locale = supportedLocales.includes(params.locale as Locale)
-    ? (params.locale as Locale)
-    : 'en';
+  params: { locale: string }; // отримуємо string
+}) {
+  const locale = params.locale as Locale; // приводимо до union
 
   return (
-    <html lang={locale}>
-      <body>{children}</body>
-    </html>
+    <>
+      {children}
+    </>
   );
 }
