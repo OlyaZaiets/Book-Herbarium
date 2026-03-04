@@ -4,13 +4,18 @@ import styles from './page.module.css';
 import FilterManager from './_components/FilterManager';
 import { prisma } from '@/lib/prisma';
 
+const supportedLocales: Locale[] = ['en', 'uk'];
+
 type Props = {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 };
 
 export default async function Account({ params }: Props) {
   const { locale } = await params;
-  const dict = await getDictionary(locale);
+
+  const safeLocale: Locale = supportedLocales.includes(locale as Locale) ? (locale as Locale) : 'en';
+
+  const dict = await getDictionary(safeLocale);
 
   const s = dict.statuses;
 
@@ -38,7 +43,7 @@ export default async function Account({ params }: Props) {
       </div>
       <FilterManager
         dict={dict}
-        locale={locale}
+        locale={safeLocale}
         initialBooks={books}
         flowerCatalog={flowerCatalog}
       />

@@ -1,11 +1,10 @@
 import { prisma } from '@/lib/prisma';
 import { NextRequest, NextResponse } from 'next/server';
 
-// 1. Змінюємо тип context на Promise
+
 export async function GET(
   request: NextRequest,
-  context: { params: Promise<{ id: string }> } 
-) {
+context: { params: Promise<{ id: string }> } ) {
   // 2. Обов'язково чекаємо на params
   const { id } = await context.params; 
 

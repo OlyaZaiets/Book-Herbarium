@@ -3,11 +3,11 @@ import { getDictionary, Locale } from '@/app/dictionaries/getDictionary';
 import { LoginButtons } from './LoginButtons';
 
 type Props = {
-  params: Promise<{ locale: Locale }>;
+  params: { locale: Locale };
 };
 
 export default async function LoginPage({ params }: Props) {
-  const { locale } = await params;
+  const { locale } = params;
   const dict = await getDictionary(locale);
 
   const l = dict.login;

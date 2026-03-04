@@ -86,14 +86,12 @@ const supportedLocales: Locale[] = ['en', 'uk'];
 
 interface AccountLayoutProps {
   children: ReactNode;
-  params: { locale: string }; // string від Next.js
+  params: Promise<{ locale: string }>; // string від Next.js
 }
 
-export default function AccountLayout({ children, params }: AccountLayoutProps) {
-  // fallback до union
-  const locale: Locale = supportedLocales.includes(params.locale as Locale)
-    ? (params.locale as Locale)
-    : 'en';
+export default async function AccountLayout({ children, params }: AccountLayoutProps) {
+  const { locale } = await params;
+  const safeLocale: Locale = supportedLocales.includes(locale as Locale) ? (locale as Locale) : 'en';
 
   return <>{children}</>;
 }

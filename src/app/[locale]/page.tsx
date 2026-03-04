@@ -2,12 +2,16 @@ import { getDictionary, Locale } from '../dictionaries/getDictionary';
 import styles from './page.module.css';
 
 type Props = {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 };
 
 export default async function Home({ params }: Props) {
   const { locale } = await params;
-  const dict = await getDictionary(locale);
+
+  const supportedLocales: Locale[] = ['en', 'uk']; 
+  const safeLocale: Locale = supportedLocales.includes(locale as Locale) ? (locale as Locale) : 'en';
+
+  const dict = await getDictionary(safeLocale);
 
   const h = dict.homepage;
   return (

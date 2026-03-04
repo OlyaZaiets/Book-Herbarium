@@ -5,16 +5,21 @@ import styles from './page.module.css';
 import FieldNotes from './_components/FieldNotes';
 import { getDictionary, Locale } from '@/app/dictionaries/getDictionary';
 
+const supportedLocales: Locale[] = ['en', 'uk'];
+
 type PageProps = {
   params: Promise<{
     id: string;
-    locale: Locale;
+    locale: string;
   }>;
 };
 
 export default async function BookPage({ params }: PageProps) {
   const { id, locale } = await params;
-  const dict = await getDictionary(locale);
+
+  const safeLocale: Locale = supportedLocales.includes(locale as Locale) ? (locale as Locale) : 'en';
+
+  const dict = await getDictionary(safeLocale);
 
   const b = dict.bookDetails;
 
