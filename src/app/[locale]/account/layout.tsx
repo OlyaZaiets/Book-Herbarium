@@ -1,5 +1,3 @@
-import { auth } from '@/auth';
-import { redirect } from 'next/navigation';
 import type { Locale } from '@/app/dictionaries/getDictionary';
 
 const supportedLocales: Locale[] = ['en', 'uk'];
@@ -9,10 +7,12 @@ export default async function AccountLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>; // ✅ params — це Promise
 }) {
-  const locale = supportedLocales.includes(params.locale as Locale)
-    ? (params.locale as Locale)
+  const { locale: rawLocale } = await params; // чекаємо на Promise
+
+  const locale = supportedLocales.includes(rawLocale as Locale)
+    ? (rawLocale as Locale)
     : 'en'; // fallback
 
   return (
