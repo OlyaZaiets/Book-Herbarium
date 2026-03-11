@@ -5,7 +5,7 @@
 ---
 
 ## 🚀 Live Demo
-# [**Live Demo – E-commerce**](https://book-herbarium.vercel.app/en) 🎬
+# [**Live Demo – Book Herbarium **](https://book-herbarium.vercel.app/en) 🎬
 
 ---
 
